@@ -1,0 +1,4 @@
+aws_region: us-east-1
+use_frozen: 1
+
+jh_dir: /home/ec2-user/jupyterhub-deploy

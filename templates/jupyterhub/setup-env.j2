@@ -1,0 +1,25 @@
+# Clone and customize this for your deployment
+#
+# NOTE:  must be sourced from jupyterhub-deploy root directory
+#
+
+# ----------------- basic inputs, must set for deployment --------------
+
+export DEPLOYMENT_NAME={{ cluster_name }}  # roman, jwebbinar, tike
+export ENVIRONMENT={{ env }}               # sandbox, dev, test, prod
+export USE_FROZEN={{ use_frozen }}         # use 0 for loosely pinned package versions, 1 for tagged production build
+
+export ACCOUNT_ID={{ account_id }}
+export ECR_ACCOUNT_ID={{ ecr_account_id.stdout }} # set to ACCOUNT_ID for local ECR, or central account ID for central ECR
+export ADMIN_ROLENAME={{ admin_rolename.stdout }}
+export DATADOG_API_KEY_ID=look-in-aws-sm
+
+# Note that unscanned- tags are pushed, pulled, and scanned but
+# the unscanned- is dropped from images permitted on the hub by
+# virtue of passing ECR scanning.
+export IMAGE_TAG=unscanned-latest-{{ env }}
+export COMMON_TAG=unscanned-common-latest-{{ env }}
+
+# ----------------- vvvv less frequently changed vvvv -------------------------------
+
+source infrequent-env   # for hub and image development

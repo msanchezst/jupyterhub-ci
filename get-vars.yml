@@ -1,0 +1,30 @@
+- name: Collect variables from SSM parameters and the environment
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: Get SSM parameters
+      set_fact:
+        env: "{{ lookup('aws_ssm', 'environment') }}"
+
+    - name: Get environment variables
+      set_fact:
+        account_id: "{{ lookup('env', 'ACCOUNT_ID') }}"
+        ecr_uri: "{{ lookup('env', 'ECR_URI') }}"
+        admin_arn: "{{ lookup('env', 'ADMIN_ARN') }}"
+
+    - name: Get admin role name from ARN
+      shell: echo {{ admin_arn }} | awk -F/ '{print $NF}'
+      register: admin_rolename
+
+    - name: Get ECR account ID from URI
+      shell: echo {{ ecr_uri }} | awk -F. '{print $1}'
+      register: ecr_account_id
+
+    - name: Show gathered variables
+      debug:
+        msg:
+          - "env - {{ env }}"
+          - "account_id - {{ account_id }}"
+          - "ecr_account_id - {{ ecr_account_id.stdout }}"
+          - "admin_rolename - {{ admin_rolename.stdout }}"

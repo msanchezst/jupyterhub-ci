@@ -1,0 +1,13 @@
+- name: "Check if {{ config_path }} exists"
+  stat:
+    path: "{{ config_path }}"
+  register: config
+
+- name: "Backup {{ config_path }} if it exists"
+  when: config.stat.exists
+  command: mv "{{ config_path }}" "{{ config_path }}.ansible-backup.{{ ansible_date_time.iso8601_micro }}"
+
+- name: "Create {{ config_path }} from template"
+  template:
+    src: "{{ template_path }}"
+    dest: "{{ config_path }}"
