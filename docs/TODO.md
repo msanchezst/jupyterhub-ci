@@ -1,14 +1,10 @@
-
 ## terraform-deploy
-
-Make configs for:
-  - backend.conf (x2)
-  - $DEPLOYMENT_NAME.tfvars (x2) # https://github.com/spacetelescope/terraform-deploy/blob/main/ephemeral-setup/your-vars.tfvars.template
 
 Execute:
   - init terraform
   - (plan terraform)
   - apply terraform
+  - how to handle secrets??? (in this case, email list for monitoring alerts)
 
 ## jupyterhub-deploy
 

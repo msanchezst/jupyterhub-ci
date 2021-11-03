@@ -5,18 +5,6 @@
     tmpl: templates/terraform
 
   tasks:
-    # ephemeral
-    - name: Generate ephemeral backend.conf
-      include_tasks: generate-config.yml
-      vars:
-        config_path: "{{ tf_dir }}/ephemeral-setup/backend.conf"
-        template_path: "{{ tmpl }}/ephemeral-backend.conf.j2"
-    - name: Generate ephemeral tfvars
-      include_tasks: generate-config.yml
-      vars:
-        config_path: "{{ tf_dir }}/ephemeral-setup/{{ cluster_name }}.tfvars"
-        template_path: "{{ tmpl }}/ephemeral.tfvars.j2"
-
     # one-time
     - name: Generate one-time backend.conf
       include_tasks: generate-config.yml
@@ -28,6 +16,18 @@
       vars:
         config_path: "{{ tf_dir }}/one-time-setup/{{ cluster_name }}.tfvars"
         template_path: "{{ tmpl }}/one-time.tfvars.j2"
+
+    # ephemeral
+    - name: Generate ephemeral backend.conf
+      include_tasks: generate-config.yml
+      vars:
+        config_path: "{{ tf_dir }}/ephemeral-setup/backend.conf"
+        template_path: "{{ tmpl }}/ephemeral-backend.conf.j2"
+    - name: Generate ephemeral tfvars
+      include_tasks: generate-config.yml
+      vars:
+        config_path: "{{ tf_dir }}/ephemeral-setup/{{ cluster_name }}.tfvars"
+        template_path: "{{ tmpl }}/ephemeral.tfvars.j2"
 
     # monitoring
     - name: Generate monitoring backend.conf
