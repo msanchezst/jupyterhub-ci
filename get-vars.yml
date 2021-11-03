@@ -9,22 +9,30 @@
 
     - name: Get environment variables
       set_fact:
-        account_id: "{{ lookup('env', 'ACCOUNT_ID') }}"
         ecr_uri: "{{ lookup('env', 'ECR_URI') }}"
         admin_arn: "{{ lookup('env', 'ADMIN_ARN') }}"
 
-    - name: Get admin role name from ARN
+    - name: Get admin role name from ADMIN_ARN
       shell: echo {{ admin_arn }} | awk -F/ '{print $NF}'
       register: admin_rolename
 
-    - name: Get ECR account ID from URI
+    - name: Get account ID from ADMIN_ARN
+      shell: echo {{ admin_arn }} | awk -F':' '{print $5}'
+      register: account_id
+
+    - name: Get ECR account ID from ECR_URI
       shell: echo {{ ecr_uri }} | awk -F. '{print $1}'
       register: ecr_account_id
+
+    - name: Get user data EFS volume ID from fstab
+      shell: cat /etc/fstab | grep '/efs' | awk -F":" '{print $1}'
+      register: user_home_efs_id
 
     - name: Show gathered variables
       debug:
         msg:
           - "env - {{ env }}"
-          - "account_id - {{ account_id }}"
+          - "account_id - {{ account_id.stdout }}"
           - "ecr_account_id - {{ ecr_account_id.stdout }}"
           - "admin_rolename - {{ admin_rolename.stdout }}"
+          - "user_home_efs_id - {{ user_home_efs_id.stdout }}"

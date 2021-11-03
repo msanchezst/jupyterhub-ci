@@ -1,1 +1,5 @@
 cluster_name: roman
+
+# This is the max size of the user data EFS volume (bytes)
+# 54975599628385 = 50 TB
+efs_threshold_bytes: 54975599628385
