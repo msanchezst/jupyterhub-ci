@@ -1,1 +1,30 @@
-TODO
+- name: Configure Terraform
+  hosts: all
+  connection: local
+  vars:
+    tmpl: templates/terraform
+
+  tasks:
+    - name: Generate ephemeral setup backend.conf
+      include_tasks: generate-config.yml
+      vars:
+        config_path: "{{ tf_dir }}/ephemeral-setup/backend.conf"
+        template_path: "{{ tmpl }}/ephemeral-backend.conf.j2"
+
+    - name: Generate ephemeral setup tfvars
+      include_tasks: generate-config.yml
+      vars:
+        config_path: "{{ tf_dir }}/ephemeral-setup/{{ cluster_name }}.tfvars"
+        template_path: "{{ tmpl }}/ephemeral.tfvars.j2"
+
+    - name: Generate one-time setup backend.conf
+      include_tasks: generate-config.yml
+      vars:
+        config_path: "{{ tf_dir }}/one-time-setup/backend.conf"
+        template_path: "{{ tmpl }}/one-time-backend.conf.j2"
+
+    - name: Generate one-time setup tfvars
+      include_tasks: generate-config.yml
+      vars:
+        config_path: "{{ tf_dir }}/one-time-setup/{{ cluster_name }}.tfvars"
+        template_path: "{{ tmpl }}/one-time.tfvars.j2"
