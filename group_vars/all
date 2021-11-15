@@ -1,4 +1,12 @@
 aws_region: us-east-1
+
 use_frozen: 1
+k8s_cluster_version: 1.21
 
 jh_dir: /home/ec2-user/jupyterhub-deploy
+tf_dir: /home/ec2-user/terraform-deploy
+
+# This is the max size of the user data EFS volume (bytes)
+# 10995116277760 = 10 TB
+efs_threshold_bytes: 10995116277760
+

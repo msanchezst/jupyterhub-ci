@@ -9,7 +9,7 @@ export DEPLOYMENT_NAME={{ cluster_name }}  # roman, jwebbinar, tike
 export ENVIRONMENT={{ env }}               # sandbox, dev, test, prod
 export USE_FROZEN={{ use_frozen }}         # use 0 for loosely pinned package versions, 1 for tagged production build
 
-export ACCOUNT_ID={{ account_id }}
+export ACCOUNT_ID={{ account_id.stdout }}
 export ECR_ACCOUNT_ID={{ ecr_account_id.stdout }} # set to ACCOUNT_ID for local ECR, or central account ID for central ECR
 export ADMIN_ROLENAME={{ admin_rolename.stdout }}
 export DATADOG_API_KEY_ID=look-in-aws-sm

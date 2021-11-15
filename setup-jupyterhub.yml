@@ -1,16 +1,18 @@
 - name: Configure JupyterHub
   hosts: all
   connection: local
+  vars:
+    tmpl: templates/jupyterhub
 
   tasks:
     - name: Generate setup-env
       include_tasks: generate-config.yml
       vars:
         config_path: "{{ jh_dir }}/setup-env"
-        template_path: "templates/jupyterhub/setup-env.j2"
+        template_path: "{{ tmpl }}/setup-env.j2"
 
     - name: Generate <deployment>.tfvars
       include_tasks: generate-config.yml
       vars:
         config_path: "{{ jh_dir }}/deployments/{{ cluster_name }}/{{ cluster_name }}.tfvars"
-        template_path: "templates/jupyterhub/deployment.tfvars.j2"
+        template_path: "{{ tmpl }}/deployment.tfvars.j2"
