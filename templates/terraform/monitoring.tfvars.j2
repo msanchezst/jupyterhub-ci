@@ -1,15 +1,15 @@
-region = {{ aws_region }}
+region = "{{ aws_region }}"
 
 account_id = {{ account_id.stdout }}
 
-rolename = {{ admin_rolename.stdout }}
+rolename = "{{ admin_rolename.stdout }}"
 
 # TODO: this is sensitive info...
 lambda_rolearn = "arn:aws:iam::{{ account_id.stdout }}:role/[REDACTED]"
 
 user_home_efs_id = {{ user_home_efs_id.stdout }}
 
-cluster_name = {{ cluster_name }}
+cluster_name = "{{ cluster_name }}"
 
 efs_threshold = {{ efs_threshold_bytes }}
 
