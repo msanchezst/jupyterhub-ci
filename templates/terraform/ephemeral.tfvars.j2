@@ -1,13 +1,13 @@
 # Put your cluster where your data is
-region = {{ aws_region }}
+region = "{{ aws_region }}"
 
 # Name of your cluster
-cluster_name = {{ cluster_name }}
+cluster_name = "{{ cluster_name }}"
 
 # Version of k8s used by EKS
 cluster_version = {{ k8s_cluster_version }}
 
-username = {{ admin_rolename.stdout }}
+username = "{{ admin_rolename.stdout }}"
 
 # ============================================================================================================
 
