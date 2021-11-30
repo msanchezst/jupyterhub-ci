@@ -1,0 +1,7 @@
+roman:
+  children:
+    prod:
+      hosts:
+        127.0.0.1
+      vars:
+        ansible_connection: local

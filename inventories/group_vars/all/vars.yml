@@ -9,4 +9,3 @@ tf_dir: /home/ec2-user/terraform-deploy
 # This is the max size of the user data EFS volume (bytes)
 # 10995116277760 = 10 TB
 efs_threshold_bytes: 10995116277760
-
