@@ -1,6 +1,6 @@
 roman:
   children:
-    prod:
+    roman-prod:
       hosts:
         127.0.0.1
       vars:

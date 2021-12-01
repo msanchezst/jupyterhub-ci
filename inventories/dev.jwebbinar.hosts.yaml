@@ -1,6 +1,6 @@
 jwebbinar:
   children:
-    dev:
+    jwebbinar-dev:
       hosts:
         127.0.0.1
       vars:
