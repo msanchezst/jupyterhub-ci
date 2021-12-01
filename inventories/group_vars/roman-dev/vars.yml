@@ -1,6 +1,1 @@
-shmee: dev
-shmeep: dev
-var123: dev
-shmoo: dev
-overwriteme: dev
-dev: dev
+env: dev
