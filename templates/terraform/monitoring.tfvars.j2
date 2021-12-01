@@ -7,7 +7,7 @@ rolename = "{{ admin_rolename.stdout }}"
 # TODO: this is sensitive info...
 lambda_rolearn = "arn:aws:iam::{{ account_id.stdout }}:role/[REDACTED]"
 
-user_home_efs_id = {{ user_home_efs_id.stdout }}
+user_home_efs_id = "{{ user_home_efs_id.stdout }}"
 
 cluster_name = "{{ cluster_name }}"
 
