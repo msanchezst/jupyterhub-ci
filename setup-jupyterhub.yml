@@ -1,6 +1,5 @@
 - name: Configure JupyterHub
   hosts: all
-  connection: local
   vars:
     tmpl: templates/jupyterhub
 

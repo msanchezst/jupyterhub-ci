@@ -1,6 +1,5 @@
 - name: Configure Terraform
   hosts: all
-  connection: local
   vars:
     tmpl: templates/terraform
 

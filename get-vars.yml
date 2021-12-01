@@ -1,6 +1,5 @@
 - name: Collect variables from SSM parameters and the environment
   hosts: all
-  connection: local
 
   tasks:
     - name: Get SSM parameters
