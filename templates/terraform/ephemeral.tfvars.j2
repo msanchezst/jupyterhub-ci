@@ -21,7 +21,7 @@ private_subnet_names = ["{{ env|upper }}-{{ cluster_name|upper }}-SC-DMZ-*"]
 cluster_sg_name = "jupyterhub-cluster-sg"
 worker_sg_name = "jupyterhub-worker-sg"
 
-notebook_instance_type: "{{ notebook_instance_type }}"
-notebook_min_capacity: {{ notebook_min_capacity }}
-notebook_desired_capacity: {{ notebook_desired_capacity }}
-notebook_max_capacity: {{ notebook_max_capacity }}
+notebook_instance_type = "{{ notebook_instance_type }}"
+notebook_min_capacity = {{ notebook_min_capacity }}
+notebook_desired_capacity = {{ notebook_desired_capacity }}
+notebook_max_capacity = {{ notebook_max_capacity }}
