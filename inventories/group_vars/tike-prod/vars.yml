@@ -1,0 +1,4 @@
+notebook_instance_type: r5.xlarge
+notebook_min_capacity: 1
+notebook_desired_capacity: 1
+notebook_max_capacity: 50
