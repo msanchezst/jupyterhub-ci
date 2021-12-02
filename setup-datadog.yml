@@ -26,6 +26,9 @@
       command: get-datadog-api-key
       register: datadog_api_key
 
+    - name: Helm repo update
+      command: helm repo update
+
     - name: Helm deploy
       shell: helm upgrade --install datadog datadog/datadog -f /home/ec2-user/datadog_values.yml --set datadog.apiKey={{ datadog_api_key.stdout }} --create-namespace -n datadog
       args:
