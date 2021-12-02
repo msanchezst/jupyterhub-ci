@@ -1,1 +1,2 @@
+env: dev
 notebook_instance_type: r5.2xlarge
