@@ -128,7 +128,7 @@ datadog:
   # datadog.tags -- List of static tags to attach to every metric, event and service check collected by this Agent.
   ## Learn more about tagging: https://docs.datadoghq.com/tagging/
   tags:
-    - env:{{ env }}
+    - env:dmd-{{ env }}
     - service:{{ cluster_name }}-sp
     - infra_type:cloud
 
@@ -228,7 +228,7 @@ datadog:
     # datadog.logs.containerCollectUsingFiles -- Collect logs from files in /var/log/pods instead of using container runtime API
     ## It's usually the most efficient way of collecting logs.
     ## ref: https://docs.datadoghq.com/agent/basic_agent_usage/kubernetes/#log-collection-setup
-    containerCollectUsingFiles: true
+    containerCollectUsingFiles: false 
 
   ## Enable apm agent and provide custom configs
   apm:
