@@ -1,7 +1,6 @@
 aws_region: us-east-1
 
 env: sandbox
-datadog_env: "{{ env }}"
 
 use_frozen: 1
 k8s_cluster_version: 1.21

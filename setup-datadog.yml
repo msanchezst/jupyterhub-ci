@@ -17,7 +17,7 @@
 
     - name: Generate Config
       template: 
-        src: group_vars/all/datadog_values.yml.j2
+        src: templates/datadog/datadog_values.yml.j2
         dest: /home/ec2-user/datadog_values.yml
     
     # helm apply
@@ -27,7 +27,6 @@
       register: datadog_api_key
 
     - name: Helm deploy
-      # shell: helm upgrade --install datadog datadog/datadog -f /home/ec2-user/datadog_values.yml --set datadog.apiKey={{ lookup('amazon.aws.aws_secret', datadog_api_key_id, region='us-east-1', version_stage='AWSCURRENT') }} --create-namespace -n datadog
       shell: helm upgrade --install datadog datadog/datadog -f /home/ec2-user/datadog_values.yml --set datadog.apiKey={{ datadog_api_key.stdout }} --create-namespace -n datadog
       args:
         chdir: /home/ec2-user/
